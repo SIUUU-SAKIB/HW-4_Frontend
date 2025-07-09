@@ -8,8 +8,10 @@ import MainLayout from './layout/MainLayout.tsx'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import HomePage from './pages/Home/HomePage.tsx'
 import AllBooks from './components/AllBooks.tsx'
-import BookDetails from './components/BookDetails.tsx'
+import BookDetails from './pages/BookDetails.tsx'
 import AddBook from './pages/AddBook.tsx'
+import EditBook from './pages/EditBook.tsx'
+import BorrowBookForm from './pages/BorrowBookForm.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -22,6 +24,8 @@ createRoot(document.getElementById('root')!).render(
             } />
             <Route path='/book/:id' element={<BookDetails/>}/>
             <Route path='/add-book' element={<AddBook/>}/>
+            <Route path='/edit-book/:id' element={<EditBook/>}/>
+            <Route path='/borrow-book/:id' element={<BorrowBookForm/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

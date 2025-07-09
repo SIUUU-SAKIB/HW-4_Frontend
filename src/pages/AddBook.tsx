@@ -7,7 +7,7 @@ const AddBook = () => {
 
     const [title, setTitle] = useState("")
     const [author, setAuthor] = useState("")
-    const [Genre, setGenre] = useState("")
+    const [genre, setGenre] = useState("")
     const [isbn, setIsbn] = useState(0)
     const [description, setDescription] = useState('')
     const [copies, setCopies] = useState(0)
@@ -15,7 +15,7 @@ const AddBook = () => {
     const [published, setPublished] = useState(0)
     const [available, setAvailable] = useState(true)
     const data = {
-        title, author, Genre, isbn, description, copies, image, published, available
+        title, author, genre, isbn, description, copies, image, published, available
     }
     const [submitForm, { isLoading, isError, isSuccess }] = useSubmitFormMutation()
     useEffect(() => {
@@ -89,19 +89,20 @@ const AddBook = () => {
                         <label className="block text-gray-600 mb-1">Genre</label>
                         <select
                             name="genre"
-                            value={Genre}
+                            value={genre}
                             onChange={(e) => setGenre(e.target.value)}
                             required
                             className="w-full border px-3 py-2 rounded-md bg-white text-gray-700"
                         >
                             <option value="">Select Genre</option>
-                            <option value="Fiction">Drama</option>
-                            <option value="Non-fiction">History</option>
-                            <option value="Science">Fiction</option>
-                            <option value="Biography">SCIENCE</option>
-                            <option value="Fantasy">Non-Fiction</option>
-                            <option value="Mystery">Adventure</option>
-
+                            <option value="Drama">Drama</option>
+                            <option value="History">History</option>
+                            <option value="Fiction">Fiction</option>
+                            <option value="Science">Science</option>
+                            <option value="Non-Fiction">Non-Fiction</option>
+                            <option value="Adventure">Adventure</option>
+                             <option value="Biography">Biography</option>
+                              <option value="Others">Others</option>
                         </select>
                     </div>
 
@@ -120,7 +121,7 @@ const AddBook = () => {
                         <label className="block text-gray-600 mb-1">Copies</label>
                         <input
                             name="copies"
-                            type="number"
+                           
                             value={copies}
                             onChange={(e) => setCopies(+e.target.value)}
                             required
@@ -161,7 +162,6 @@ const AddBook = () => {
                         <label className="block text-gray-600 mb-1">Published Year</label>
                         <input
                             name="publishedYear"
-                            type="number"
                             value={published}
                             onChange={(e) => setPublished(+e.target.value)}
                             required
