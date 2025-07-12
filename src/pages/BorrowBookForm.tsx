@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useBorrowedBooksQuery, usePostBorrowedBookMutation } from '../Redux/features/bookSlice/bookApi';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import LoadintSpinner from '../components/LoadintSpinner';
 import Swal from 'sweetalert2';
 import toast, { Toaster } from 'react-hot-toast';
 
-const BorrowBookForm = () => {
+const BorrowBookForm: React.FC  = () => {
     const { id } = useParams()
     const { data, isLoading, error, refetch } = useBorrowedBooksQuery(id)
     const [borrowBook, { isSuccess, isError }] = usePostBorrowedBookMutation()
-    const [bookName, setBookName] = useState();
+    const [bookName, setBookName] = useState("");
     const [quantity, setQuantity] = useState(1);
     const [dueDate, setDueDate] = useState("");
     const [borrowerName, setBorrowerName] = useState("")
+    const navigate = useNavigate()
     useEffect(() => {
         if (isSuccess) {
             toast.success('Book Borrowed successfully!😍');
+            setTimeout(() => {
+                navigate('/borrowed-summary')
+            }, 1500);
 
         }
         if (isError) {
@@ -25,7 +29,8 @@ const BorrowBookForm = () => {
         if (isLoading) {
             <LoadintSpinner />
         }
-    }, [isSuccess, isError]);
+    }, [isSuccess, isError, isLoading]);
+console.log(error)
     useEffect(() => {
         if (data?.borrowedBooks?.title) {
             setBookName(data.borrowedBooks.title);
@@ -61,8 +66,7 @@ const BorrowBookForm = () => {
         } catch (error) {
             console.log(`Failed to borrow the book, ${error}`)
         }
-        console.log('Borrowed Book:', formData);
-        // TODO: Send to API or handle further
+
     };
 
     return (
@@ -81,6 +85,7 @@ const BorrowBookForm = () => {
                         value={bookName}
                         required
                         min={1}
+                        readOnly
                         max={3}
                         className="w-full border px-3 py-2 rounded-md"
                     />

@@ -1,6 +1,6 @@
 import React from 'react'
 // import heroImg from "../assets/pexels-pixabay-159711.jpg"
-const Hero = () => {
+const Hero: React.FC  = () => {
   return (
     <div className='relative min-h-[600px] flex items-center justify-center'>
         <div className='absolute inset-0 bg-cover bg-center bg-[url("https://images.pexels.com/photos/1907785/pexels-photo-1907785.jpeg")]'>

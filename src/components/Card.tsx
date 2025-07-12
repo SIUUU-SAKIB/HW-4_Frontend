@@ -1,5 +1,5 @@
 import { Link } from "react-router"
-const Card = ({book}) => {
+const Card: React.FC  = ({book}) => {
    return (
     <div className="bg-white rounded-2xl shadow-md overflow-hidden w-full max-w-sm  hover:shadow-lg transition duration-300">
       <img

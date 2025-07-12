@@ -1,32 +1,68 @@
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import logo from '../assets/FINAL LOGO.png'
 
-const Navbar = () => {
-    return (
-        <div className='min-w-screen bg-[var(--color-secondary)] py-2 md:py-3 lg:py-4 '>
-            <div className='flex items-center justify-between px-6 md:px-12 lg:px-16'>
+const Navbar: React.FC  = () => {
+  return (
+    <header className='w-full bg-[var(--color-secondary)] shadow-sm'>
+      <nav className='max-w-screen-2xl mx-auto px-4 md:px-8 lg:px-16 py-4 flex flex-col md:flex-row items-center justify-between gap-4'>
+        
+        {/* Logo */}
+        <NavLink to="/" className="shrink-0">
+          <img
+            src={logo}
+            alt="Library Logo"
+            className="h-10 md:h-12 object-contain"
+          />
+        </NavLink>
 
+        {/* Nav Links */}
+        <ul className='flex flex-col md:flex-row items-center gap-3 md:gap-6 text-sm md:text-base font-semibold font-primary'>
+            <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `uppercase tracking-wide transition hover:text-[var(--color-accent)] ${
+                isActive ? 'text-[var(--color-primary)] underline' : 'text-black'
+              }`
+            }
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/all-books"
+            className={({ isActive }) =>
+              `uppercase tracking-wide transition hover:text-[var(--color-accent)] ${
+                isActive ? 'text-[var(--color-primary)] underline' : 'text-black'
+              }`
+            }
+          >
+            All Books
+          </NavLink>
 
-                <img
-                    className="block w-1/2 md:w-2/5 lg:w-1/5 object-cover"
-                    src={logo}
-                    alt="Logo"
-                />
+          <NavLink
+            to="/add-book"
+            className={({ isActive }) =>
+              `uppercase tracking-wide transition hover:text-[var(--color-accent)] ${
+                isActive ? 'text-[var(--color-primary)] underline' : 'text-black'
+              }`
+            }
+          >
+            Add Book
+          </NavLink>
 
-
-
-
-
-
-                <ul className='flex flex-col items-center gap-1'>
-                    <Link to={'/all-books'}><li className='uppercase font-semibold text-lg font-primary text-[var(--color-primary)] cursor-pointer hover:underline md:text-4xl lg:text-6xl'>all books</li></Link>
-                    <li className='uppercase font-semibold text-lg font-primary text-[var(--color-primary)] cursor-pointer transition duration-300 hover:underline md:text-4xl lg:text-6xl'><NavLink to={'/add-book'}>add books</NavLink></li>
-                    <li className='uppercase font-semibold text-lg font-primary text-[var(--color-primary)] cursor-pointer transition duration-100 ease-in-out hover:underline md:text-4xl lg:text-6xl'>borrow books</li>
-
-                </ul>
-            </div>
-        </div>
-    )
+          <NavLink
+            to="/borrowed-summary"
+            className={({ isActive }) =>
+              `uppercase tracking-wide transition hover:text-[var(--color-accent)] ${
+                isActive ? 'text-[var(--color-primary)] underline' : 'text-black'
+              }`
+            }
+          >
+            Borrowed Books
+          </NavLink>
+        </ul>
+      </nav>
+    </header>
+  )
 }
 
 export default Navbar

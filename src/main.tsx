@@ -12,6 +12,7 @@ import BookDetails from './pages/BookDetails.tsx'
 import AddBook from './pages/AddBook.tsx'
 import EditBook from './pages/EditBook.tsx'
 import BorrowBookForm from './pages/BorrowBookForm.tsx'
+import BorrowedSum from './pages/BorrowedSum.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -26,6 +27,7 @@ createRoot(document.getElementById('root')!).render(
             <Route path='/add-book' element={<AddBook/>}/>
             <Route path='/edit-book/:id' element={<EditBook/>}/>
             <Route path='/borrow-book/:id' element={<BorrowBookForm/>}/>
+            <Route path='/borrowed-summary' element={<BorrowedSum/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

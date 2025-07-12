@@ -5,7 +5,7 @@ import LoadintSpinner from '../components/LoadintSpinner';
 import { useEffect } from 'react';
 import Swal from 'sweetalert2';
 
-const BookDetails = () => {
+const BookDetails: React.FC  = () => {
     const { id } = useParams()
     const { data, isLoading, refetch } = useGetBooksByIdQuery(id)
 const [deleteBook, {isSuccess, isError}] = useDeleteBookMutation()

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import { useEditBookMutation, useGetBooksByIdQuery } from '../Redux/features/bookSlice/bookApi'
 import LoadintSpinner from '../components/LoadintSpinner'
 import toast, { Toaster } from 'react-hot-toast'
 
-const EditBook = () => {
+const EditBook: React.FC  = () => {
     const { id } = useParams()
     const { data, error, isLoading, refetch } = useGetBooksByIdQuery(id)
     useEffect(() => {
@@ -24,10 +24,18 @@ const EditBook = () => {
     const [imagee, setImage] = useState(book.image || '');
     const [publishedd, setPublished] = useState(book.published || 0);
     const [availablee, setAvailable] = useState(book.available ?? true);
-
+    const navigate = useNavigate()
 
     const [editBook, { isError, isSuccess }] = useEditBookMutation()
-
+    useEffect(() => {
+        if (isSuccess) {
+            toast.success('Book updated successfully! 😍');
+            setTimeout(() => navigate('/all-books'), 1500);
+        }
+        if (isError) {
+            toast.error('Failed to update book.');
+        }
+    }, [isSuccess, isError]);
     const handleSubmit = async (e: any) => {
         e.preventDefault()
         const updatedData = {
@@ -41,6 +49,8 @@ const EditBook = () => {
             published: publishedd,
             available: availablee,
         };
+
+
         try {
             const res = await editBook({ id: id, data: updatedData })
             console.log("Successfully Edited the book" + res)
@@ -134,7 +144,7 @@ const EditBook = () => {
                             <label className="block text-gray-600 mb-1">Copies</label>
                             <input
                                 name="copies"
-                                
+
                                 value={copiess}
                                 onChange={(e) => setCopies(+e.target.value)}
                                 required
@@ -151,7 +161,7 @@ const EditBook = () => {
                                     value={availablee.toString()}
                                     onChange={(e) => setAvailable(e.target.value === "true")}
                                     required
-                                    
+
                                     className="w-full border px-3 py-2 rounded-md bg-white text-gray-700"
                                 >
                                     <option value="true">true</option>

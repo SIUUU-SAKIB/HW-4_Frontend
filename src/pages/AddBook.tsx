@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useSubmitFormMutation } from '../Redux/features/bookSlice/bookApi';
 import toast, { Toaster } from 'react-hot-toast';
 import LoadintSpinner from '../components/LoadintSpinner';
+import { useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 
-const AddBook = () => {
+const AddBook: React.FC  = () => {
 
     const [title, setTitle] = useState("")
     const [author, setAuthor] = useState("")
@@ -14,21 +16,27 @@ const AddBook = () => {
     const [image, setImage] = useState("")
     const [published, setPublished] = useState(0)
     const [available, setAvailable] = useState(true)
+    const navigate = useNavigate()
     const data = {
         title, author, genre, isbn, description, copies, image, published, available
     }
+
     const [submitForm, { isLoading, isError, isSuccess }] = useSubmitFormMutation()
     useEffect(() => {
         if (isSuccess) {
-            toast.success('Book added successfully!😍');
+            toast.success('Book Borrowed successfully!😍');
+            setTimeout(() => {
+                navigate('/all-books')
+            }, 1000);
+
 
         }
         if (isError) {
             toast.error("Something went wrong😔")
 
         }
-        if(isLoading) {
-            <LoadintSpinner/>
+        if (isLoading) {
+            <LoadintSpinner />
         }
     }, [isSuccess, isError]);
 
@@ -47,19 +55,21 @@ const AddBook = () => {
     }, [isSuccess]);
 
 
-    const handleSubmit = async (e:any) => {
+    const handleSubmit = async (e: any) => {
         e.preventDefault()
         try {
             await submitForm(data).unwrap()
+
         } catch (err) {
             console.error('Error submitting:', err)
         }
+
     }
 
     return (
         <>
             <Toaster position="top-center" reverseOrder={false} />
-            <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl shadow-lg max-w-3xl mx-auto space-y-6 my-8 md:my-16 ">
+            <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl shadow-lg max-w-3xl mx-auto space-y-6 my-8 ">
                 <h2 className="text-2xl font-semibold text-gray-800 mb-4 font-primary">Add New Book</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 font-secondary">
@@ -101,8 +111,8 @@ const AddBook = () => {
                             <option value="Science">Science</option>
                             <option value="Non-Fiction">Non-Fiction</option>
                             <option value="Adventure">Adventure</option>
-                             <option value="Biography">Biography</option>
-                              <option value="Others">Others</option>
+                            <option value="Biography">Biography</option>
+                            <option value="Others">Others</option>
                         </select>
                     </div>
 
@@ -121,7 +131,7 @@ const AddBook = () => {
                         <label className="block text-gray-600 mb-1">Copies</label>
                         <input
                             name="copies"
-                           
+
                             value={copies}
                             onChange={(e) => setCopies(+e.target.value)}
                             required

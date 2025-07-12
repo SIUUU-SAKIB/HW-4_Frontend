@@ -1,6 +1,6 @@
 
 
-const Footer = () => {
+const Footer: React.FC  = () => {
   return (
     <footer className="bg-gray-900 max-w-screen flex flex-col items-center justify-center text-gray-300 py-10 px-6 md:px-16">
       <div className="flex items-center max-w-screen-2xl mx-auto  flex-col md:flex-row justify-evenly gap-8">

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const LoadintSpinner = () => {
+const LoadintSpinner: React.FC  = () => {
   return (
     <div className="relative w-16 h-16 min-h-screen min-w-screen">
   <div className="absolute inset-0 rounded-full bg-blue-500 blur-lg opacity-75 animate-ping"></div>

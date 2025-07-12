@@ -25,23 +25,30 @@ export const apiSlice = createApi({
                 body: data
             })
         }),
-        deleteBook:builder.mutation({
-            query:(id) => ({
-            url:`/delete-book/${id}`,
-            method:"DELETE"
+        deleteBook: builder.mutation({
+            query: (id) => ({
+                url: `/delete-book/${id}`,
+                method: "DELETE"
             })
         }),
-        postBorrowedBook:builder.mutation({
-          query:(data) => ({
-            url:`/borrow`,
-            method:"POST",
-            body:data
-          })
+        postBorrowedBook: builder.mutation({
+            query: (data) => ({
+                url: `/borrow`,
+                method: "POST",
+                body: data
+            })
         }),
-        borrowedBooks:builder.query({
-            query:(id) => `/borrow-book/${id}`
+        borrowedBooks: builder.query({
+            query: (id) => `/borrow-book/${id}`
+        }),
+        borrowSummary: builder.query({
+            query: () => "/borrow-summary"
+        }),
+        getPaginatedBooks: builder.query({
+            query: ({ page = 1, limit = 8 }) => `/books/page?page=${page}&limit=${limit}`
         })
+
     })
 })
 
-export const { useGetBooksQuery, useGetBooksByIdQuery, useSubmitFormMutation, useEditBookMutation, useDeleteBookMutation, useBorrowedBooksQuery, usePostBorrowedBookMutation } = apiSlice
+export const { useGetBooksQuery, useGetBooksByIdQuery, useSubmitFormMutation, useEditBookMutation, useDeleteBookMutation, useBorrowedBooksQuery, usePostBorrowedBookMutation, useBorrowSummaryQuery, useGetPaginatedBooksQuery } = apiSlice

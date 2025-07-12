@@ -21,3 +21,24 @@
 .font-secondary {
   font-family: "Source Sans 3", sans-serif;
 }
+
+
+@layer utilities {
+  .custom-logo {
+    display: block;
+    width: 50%;
+    object-fit: cover;
+  }
+
+  @media (min-width: 768px) {
+    .custom-logo {
+      width: 40%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .custom-logo {
+      width: 20%;
+    }
+  }
+}

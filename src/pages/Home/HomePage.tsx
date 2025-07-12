@@ -2,13 +2,13 @@ import React from 'react'
 import Hero from './Hero'
 import AllBooks from './Books'
 
-const HomePage = () => {
+const HomePage: React.FC  = () => {
   return (
     <div>
-        <Hero/>
-        <AllBooks/>
+      <Hero />
+      <AllBooks />
     </div>
   )
 }
 
-export default HomePage
+export default HomePage;
