@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice} from "@reduxjs/toolkit";
 const initialState = {
     currentPage: 1,
     limit: 8
@@ -15,9 +15,6 @@ const paginationSlice = createSlice({
         },
         setPage: (state, action) => {
             state.currentPage = action.payload
-        },
-        reset: (state) => {
-
         }
     }
 })

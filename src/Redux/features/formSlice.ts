@@ -7,7 +7,7 @@ const formSlice = createSlice({
     name: "form",
     initialState,
     reducers: {
-submittedData:(state, action) => {
+submittedData:(state:any, action:any) => {
     state.submissions.push(action.payload)
 }
     }
