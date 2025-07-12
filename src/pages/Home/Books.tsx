@@ -2,7 +2,7 @@ import Card from "../../components/Card";
 import LoadintSpinner from "../../components/LoadintSpinner";
 import { useGetBooksQuery } from "../../Redux/features/bookSlice/bookApi";
 import { Link } from "react-router-dom";
-import { FC } from "react";
+import { type FC } from "react";
 
 
 interface Book {

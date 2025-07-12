@@ -1,6 +1,6 @@
 import React, { useEffect, useState, type FormEvent } from 'react';
 import { useBorrowedBooksQuery, usePostBorrowedBookMutation } from '../Redux/features/bookSlice/bookApi';
-import { useNavigate, useParams } from 'react-router-dom'; // react-router-dom for hooks
+import { useNavigate, useParams } from 'react-router-dom'; 
 import LoadintSpinner from '../components/LoadintSpinner';
 import Swal from 'sweetalert2';
 import toast, { Toaster } from 'react-hot-toast';
@@ -11,7 +11,7 @@ interface BorrowedBook {
 }
 
 interface BorrowedBooksData {
-  borrowedBooks: BorrowedBook;
+  borrowedBooks?: BorrowedBook;
 }
 
 const BorrowBookForm: React.FC<BorrowedBooksData> = () => {

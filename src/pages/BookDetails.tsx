@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 const BookDetails: React.FC  = () => {
     const { id } = useParams()
     const { data, isLoading, refetch } = useGetBooksByIdQuery(id)
-const [deleteBook, {isSuccess, isError}] = useDeleteBookMutation()
+const [deleteBook] = useDeleteBookMutation()
 const navigate = useNavigate()
     useEffect(() => {
         refetch()

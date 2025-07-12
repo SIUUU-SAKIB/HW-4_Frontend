@@ -20,8 +20,8 @@ interface Book {
 }
 
 interface PaginatedBookResponse {
-  books: Book[];
-  total: number;
+  books?: Book[];
+  total?: number;
 }
 
 const AllBooks: React.FC<PaginatedBookResponse> = () => {
