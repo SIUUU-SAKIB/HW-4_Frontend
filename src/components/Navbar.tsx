@@ -3,7 +3,7 @@ import logo from '../assets/FINAL LOGO.png'
 
 const Navbar: React.FC  = () => {
   return (
-    <header className='w-full bg-[var(--color-secondary)] shadow-sm'>
+    <header className='w-full sticky top-0 left-0 z-20 bg-[var(--color-secondary)] shadow-sm'>
       <nav className='max-w-screen-2xl mx-auto px-4 md:px-8 lg:px-16 py-4 flex flex-col md:flex-row items-center justify-between gap-4'>
         
         {/* Logo */}

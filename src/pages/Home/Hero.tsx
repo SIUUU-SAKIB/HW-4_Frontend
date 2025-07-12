@@ -1,5 +1,4 @@
 import React from 'react'
-// import heroImg from "../assets/pexels-pixabay-159711.jpg"
 const Hero: React.FC  = () => {
   return (
     <div className='relative min-h-[600px] flex items-center justify-center'>
@@ -19,5 +18,5 @@ const Hero: React.FC  = () => {
     </div>
   )
 }
-// className={`flex flex-col items-center space-y-16 bg-[url("https://images.pexels.com/photos/1907785/pexels-photo-1907785.jpeg")] min-h-[600px] bg-cover bg-center md:bg-${heroImg}`}
+
 export default Hero
